@@ -29,7 +29,7 @@ def driver(config):
     if browser == 'chrome':
         options = ChromeOptions()
         if selenoid is False:
-            options.add_argument("--window-size=800,600")
+            # options.add_argument("--window-size=800,600")
             prefs = {"download.default_directory": download_dir}
             options.add_experimental_option('prefs', prefs)
             manager = ChromeDriverManager(version=version)
@@ -91,6 +91,7 @@ def incorrect_input(driver, config):
     page_object = BasePage(driver, config)
     login = 'Incorrect_user_email@mail.ru'
     paswd = 'Incorrect_user_password'
+    config['fake_email'] = login
     locator = basic_locators.BasePageLocators()
     page_object.click(locator.AUTH_BUTTON)
     page_object.find(locator.EMAIL).send_keys(login)
@@ -109,9 +110,9 @@ def generated_data():
     """
     dirname = os.path.dirname(__file__)
     PATH_TO_FILE = os.path.join(dirname, 'test_company.json')
+    new_name = 'New company ' + str(datetime.datetime.now())
     with open(PATH_TO_FILE, 'r') as f:
         file = json.load(f)
-        new_name = 'New company ' + str(datetime.datetime.now())
         file['name'] = new_name
     with open('temp_file.json', 'w') as f:
         json.dump(file, f)

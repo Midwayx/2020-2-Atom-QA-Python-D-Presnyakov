@@ -22,3 +22,8 @@ class MainPage(BasePage):
         self.click(self.locator.SETTINGS(name), timeout=12)
         self.click(self.locator.DELETE, timeout=12)
 
+    def check_company_created(self, name):
+        self.find(self.locator.SEARCH_FIELD, timeout=12).send_keys(name)
+        self.click(self.locator.SEARCH_BUTTON(name), timeout=12)
+        self.find(self.locator.SUCCESS, timeout=12)
+

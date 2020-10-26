@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from ui.locators import basic_locators
 
-RETRY_COUNT = 5
+RETRY_COUNT = 10
 
 
 class BasePage(object):
@@ -21,7 +21,7 @@ class BasePage(object):
 
         return self.wait(timeout).until(EC.presence_of_element_located(locator))  # поиск элемента с ожиданием
 
-    def click(self, locator, timeout=None):
+    def click(self, locator, timeout=10):
         # попытки чтобы кликнуть
         for i in range(RETRY_COUNT):
             try:

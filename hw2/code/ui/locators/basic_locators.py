@@ -26,12 +26,17 @@ class MainPageLocators:
     DELETE = (By.XPATH, "//li[contains(text(), 'Удалить')]")
     FIRST_CREATE = (By.XPATH, '//a[@href="/campaign/new"]')
     ACTIONS = (By.XPATH, '//span[contains(text(), "Действия")]')
+    SEARCH_FIELD = (By.XPATH, '//input[contains(@placeholder, "Поиск")]')
+    SUCCESS = (By.XPATH, '//span[contains(text(), "из")]/following-sibling::span[text()="1"]')
 
     def CHECK(self, name):
         return By.XPATH, f'//a[contains(text(),"{name}")]'
 
     def SETTINGS(self, name):
         return By.XPATH, f'//a[@title="{name}"]/../../following-sibling::div[1]/div'
+
+    def SEARCH_BUTTON(self, name):
+        return By.XPATH, f'//span[contains(text(), "{name}")]'
 
 
 

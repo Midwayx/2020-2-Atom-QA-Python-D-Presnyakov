@@ -1,3 +1,5 @@
+from time import sleep
+
 from selenium.common.exceptions import TimeoutException
 from ui.locators.basic_locators import SegmentPageLocators
 
